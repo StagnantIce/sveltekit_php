@@ -1,0 +1,5 @@
+{
+    "require": {
+        "vlucas/bulletphp": "^1.7"
+    }
+}

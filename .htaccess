@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(_app.*.js)$ /build/$1 [NC,L,QSA]
+RewriteRule ^(_app.*.css)$ /build/$1 [NC,L,QSA]
+RewriteRule !^(build\/|index\.php).*$ /index.php [NC,L,QSA]

@@ -18,7 +18,7 @@ npm run build
 index.php - main entry point
 backaned/ - phpData sources for pages, each page has $request array param
 backaned/routes.php - dynamic routes regexp.
-svelte.config.js - dynamic routes regexp
+svelte.config.js - dynamic routes regexp and adpater-static set.
 src/app.html - section with dyanamic window.phpData for SSR.
 ```
 use index.php for php or autoload classes.

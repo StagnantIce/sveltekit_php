@@ -1,7 +1,7 @@
 # Create sveltekit + php backend without nodejs.
 
 
-## Building sveltekit app
+## SvelteKit: Building app in build folder.
 
 To create a production version of your app:
 
@@ -9,7 +9,7 @@ To create a production version of your app:
 npm run build
 ```
 
-## php files with changes
+## PHP: which files has changes?
 
 ```
 .htaccess

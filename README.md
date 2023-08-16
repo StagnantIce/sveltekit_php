@@ -1,7 +1,9 @@
 # Create sveltekit + php backend without nodejs.
 
+Usefull, if you like sveltekit, but dont have hosting with nodejs.
 
-## Building
+
+## SvelteKit: Building app in build folder.
 
 To create a production version of your app:
 
@@ -9,7 +11,15 @@ To create a production version of your app:
 npm run build
 ```
 
-## php
+## PHP: which files has changes?
 
+```
+.htaccess
+index.php - main entry point
+backaned/ - phpData sources for pages, each page has $request array param
+backaned/routes.php - dynamic routes regexp.
+svelte.config.js - dynamic routes regexp and adpater-static set.
+src/app.html - section with dyanamic window.phpData for SSR.
+```
 use index.php for php or autoload classes.
 You can use backend path for routes and return data from backend (see index.php and svelte.config.js)

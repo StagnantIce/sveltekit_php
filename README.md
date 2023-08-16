@@ -1,5 +1,7 @@
 # Create sveltekit + php backend without nodejs.
 
+Usefull, if you like sveltekit, but dont have hosting with nodejs.
+
 
 ## SvelteKit: Building app in build folder.
 

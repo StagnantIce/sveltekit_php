@@ -14,7 +14,7 @@ npm run build
 ```
 .htaccess
 index.php - main entry point
-backaned/ - phpData sources for pages
+backaned/ - phpData sources for pages, each page has $request array param
 backaned/routes.php - dynamic routes regexp.
 svelte.config.js - dynamic routes regexp
 src/app.html - section with dyanamic window.phpData for SSR.

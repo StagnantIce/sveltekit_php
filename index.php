@@ -9,6 +9,7 @@ $pathWithoutSlash = substr($path, 1) ?: 'index';
 $htmlFile = "$buildPath/$pathWithoutSlash.html";
 
 $phpData = [];
+$request = null;
 
 if (file_exists($backendPath . '/routes.php')) {
     $dynamicRoutes = require_once($backendPath . '/routes.php');
@@ -17,7 +18,7 @@ if (file_exists($backendPath . '/routes.php')) {
             if (preg_match($key, $pathWithoutSlash, $params)) {
                 $pathWithoutSlash = $file;
                 $htmlFile = "$buildPath/$pathWithoutSlash.html";
-                $phpData['request'] = array_slice($params, 1);
+                $request = array_slice($params, 1);
             }
         }
     }
@@ -29,4 +30,16 @@ $phpDataFile = "$backendPath/$pathWithoutSlash.php";
 if (file_exists($phpDataFile)) {
     $phpData = array_merge($phpData, require_once($phpDataFile));
 }
-echo str_replace('%sveltekit.php%', json_encode($phpData), $data);
+echo str_replace(
+    '%sveltekit.php%',
+    json_encode($phpData),
+    preg_replace_callback('/%phpData\.([-_a-z]+)%/i', function ($matches) use ($phpData) {
+        foreach (array_slice($matches, 1) as $key) {
+            if (isset($phpData[$key])) {
+                return $phpData[$key];
+            };
+        }
+        return '';
+    }, $data)
+);
+

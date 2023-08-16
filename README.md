@@ -16,10 +16,10 @@ npm run build
 ```
 .htaccess
 index.php - main entry point
-backaned/ - phpData sources for pages, each page has $request array param
-backaned/routes.php - dynamic routes regexp.
+backend/ - phpData sources for pages, each page has $request array param and can have %phpData...% for dynamic SSR data.
+backend/routes.php - dynamic routes regexp.
 svelte.config.js - dynamic routes regexp and adpater-static set.
-src/app.html - section with dyanamic window.phpData for SSR.
+src/app.html - section with dynamic window.phpData for hydration.
 ```
 use index.php for php or autoload classes.
 You can use backend path for routes and return data from backend (see index.php and svelte.config.js)

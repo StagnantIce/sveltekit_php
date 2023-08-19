@@ -1,11 +1,11 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     
-    const title = '%phpData.title%';
+    let ssrTitle = '%phpData.title%';
 
     onMount(() => {
-        title = window.pageData['title'];
+        ssrTitle = window.pageData['title'];
     })
 </script>
 
-{title}
+{ssrTitle}

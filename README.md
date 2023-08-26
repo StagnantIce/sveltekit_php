@@ -2,6 +2,8 @@
 
 Usefull, if you like sveltekit, but dont have hosting with nodejs.
 
+Example: /backend/blog/[slug].php
+
 
 ## SvelteKit: Building app in build folder.
 
@@ -16,7 +18,7 @@ npm run build
 ```
 .htaccess
 index.php - main entry point
-backend/ - phpData sources for pages, each page has $request array param and can have %phpData...% for dynamic SSR data.
+backend/ - phpData sources for pages, each page has $request array param and can have %phpData...% for dynamic SSR data. (see /backend/blog/[slug].php)
 backend/routes.php - dynamic routes regexp.
 svelte.config.js - dynamic routes regexp and adpater-static set.
 src/app.html - section with dynamic window.phpData for hydration.

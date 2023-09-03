@@ -1,7 +1,11 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*\.(js|css|jpg|png|jpeg))$ /build/$1 [NC,L,QSA]
+RewriteRule ^.*(_app.*\.(js|css|jpg|png|jpeg))$ /build/$1 [NC,L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(?!build\/).*?([-a-z]+\.(js|css|jpg|png|jpeg))$ /build/$1 [NC,L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -25,3 +25,30 @@ src/app.html - section with dynamic window.phpData for hydration.
 ```
 use index.php for php or autoload classes.
 You can use backend path for routes and return data from backend (see index.php and svelte.config.js)
+
+
+## PHP: Can I use php tags in svelte files?
+
+Yes, its possible, example:
+
+```
+<script lang="ts">
+    import { Demo } from '$lib/demo';
+    import { Site } from '$lib/site';
+    import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+    {#if window.phpData.site.id === 1}
+        <Demo/>
+    {:else}
+        <Site/>
+    {/if}
+{:else}
+    {@html '<!--<?php if ($phpData["site"]["id"] === 1) {?>-->'}
+        <Demo/>
+    {@html '<!--<?php } else { ?>-->'}
+        <Site/>
+    {@html '<!--<?php } ?>-->'}
+{/if}
+```

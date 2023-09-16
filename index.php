@@ -44,7 +44,7 @@ if (file_exists($htmlFile)) {
     }
     $_data = file_get_contents(BUILD_PATH . "/$pathWithoutSlash.html");
     ob_start();
-    eval('?>' . str_replace(['<!-- HTML_TAG_START --><!--<?', '?>--><!-- HTML_TAG_END -->'], ['<?', '?>'], $_data));
+    eval('?>' . str_replace(['&lt;?', '?&gt;'], ['<?', '?>'], $_data));
     $_data = ob_get_contents();
     ob_end_clean();
 } else {

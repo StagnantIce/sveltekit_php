@@ -20,9 +20,9 @@ $phpData = [];
 $request = null;
 
 if (file_exists(BACKEND_PATH . '/routes.php')) {
-    $dynamicRoutes = require_once(BACKEND_PATH . '/routes.php');
+    $_dynamicRoutes = require_once(BACKEND_PATH . '/routes.php');
     if (!file_exists($htmlFile)) {
-        foreach ($dynamicRoutes as $key => $file) {
+        foreach ($_dynamicRoutes as $key => $file) {
             if (preg_match($key, $pathWithoutSlash, $params)) {
                 $pathWithoutSlash = $file;
                 $htmlFile = BUILD_PATH . "/$pathWithoutSlash.html";
@@ -32,17 +32,21 @@ if (file_exists(BACKEND_PATH . '/routes.php')) {
     }
 }
 
-$data = '';
+$_data = '';
 if (file_exists($htmlFile)) {
-    $data = file_get_contents(BUILD_PATH . "/$pathWithoutSlash.html");
-    $phpDataFile = BACKEND_PATH . "/$pathWithoutSlash.php";
+    $_phpDataFile = BACKEND_PATH . "/$pathWithoutSlash.php";
 
-    if (file_exists($phpDataFile)) {
-        $result = require_once($phpDataFile);
-        if (is_array($result)) {
-            $phpData = array_merge($phpData, $result);
+    if (file_exists($_phpDataFile)) {
+        $_result = require_once($_phpDataFile);
+        if (is_array($_result)) {
+            $phpData = array_merge($phpData, $_result);
         }
     }
+    $_data = file_get_contents(BUILD_PATH . "/$pathWithoutSlash.html");
+    ob_start();
+    eval('?>' . str_replace(['<!-- HTML_TAG_START --><!--<?', '?>--><!-- HTML_TAG_END -->'], ['<?', '?>'], $_data));
+    $_data = ob_get_contents();
+    ob_end_clean();
 } else {
     http_response_code(404);
 }
@@ -71,5 +75,5 @@ echo str_replace(
         }
 
         return is_string($result) ? $result : '';
-    }, $data)
+    }, $_data)
 );

@@ -45,10 +45,10 @@ Yes, its possible, example:
         <Site/>
     {/if}
 {:else}
-    {@html '<!--<?php if ($phpData["site"]["id"] === 1) {?>-->'}
+    {'<?php if ($phpData["site"]["id"] === 1) {?>'}
         <Demo/>
-    {@html '<!--<?php } else { ?>-->'}
+    {'<?php } else { ?>'}
         <Site/>
-    {@html '<!--<?php } ?>-->'}
+    {'<?php } ?>'}
 {/if}
 ```

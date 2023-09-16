@@ -31,7 +31,7 @@ You can use backend path for routes and return data from backend (see index.php 
 
 Yes, its possible, example:
 
-``
+```
 <script lang="ts">
     import { Demo } from '$lib/demo';
     import { Site } from '$lib/site';
